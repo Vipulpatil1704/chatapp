@@ -9,11 +9,15 @@ import { server,app } from './socket/socket.js'
 import cors from 'cors'
 dotenv.config();
 // const app=express();
+
+//Websoket is working fine on render till this commit c17
 app.use(cors({
  origin:'https://chatapp-1-9mt9.onrender.com',
  methods:['GET','POST'],
  credentials:true
 }));
+
+
 //middleware for parsing json bodies
 app.use(express.json());
 app.use(cookieParser());
