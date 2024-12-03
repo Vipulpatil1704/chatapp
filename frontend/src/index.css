@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.home{
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+@media (max-width:530px) {
+    .messages{
+        max-height: 450px;
+        overflow-y: scroll;
+    }
+}
