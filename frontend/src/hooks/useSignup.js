@@ -1,6 +1,7 @@
 import { useReducer } from "react";
 import toast from "react-hot-toast";
 import { useAuthContext } from "../context/AuthContext";
+import API_BASE_URL from "../apiConfig";
 const reducer=(state,action)=>{
     switch(action.type){
         case 'FETCH_REQUEST':
@@ -39,7 +40,7 @@ export const useSignup=()=>{
             dispatch({type:'FETCH_REQUEST'});
             try {
                 //api call
-                const res=await fetch('/api/auth/signup',{
+                const res=await fetch(`${API_BASE_URL}/api/auth/signup`,{
                     method:'POST',
                     headers:{
                         "content-type":'application/json'

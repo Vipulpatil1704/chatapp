@@ -5,8 +5,7 @@ import authRoute from './routes/auth.routes.js'
 import messageRoute from './routes/message.routes.js'
 import userRoute from './routes/user.routes.js'
 import cookieParser from 'cookie-parser'
-import { server,app } from './socket/socket.js'
-import path from 'path'  
+import { server,app } from './socket/socket.js'  
 dotenv.config();
 // const app=express();
 //middleware for parsing json bodies
