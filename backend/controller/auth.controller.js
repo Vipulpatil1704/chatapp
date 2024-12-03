@@ -31,7 +31,7 @@ export const signup = async (req,res,next)=>{
         await newUser.save();
         //generate jwt token 
         const token=jwt.sign({id:newUser._id},process.env.JWT_SECRET);  
-        res.cookie("access_token",token,{httpOnly:true}).status(201).json({_id:newUser._id,username:newUser.username,email:newUser.email,profilePic:newUser.profilePic});
+        res.cookie("access_token",token,{httpOnly:true,secure:true,sameSite:'none'}).status(201).json({_id:newUser._id,username:newUser.username,email:newUser.email,profilePic:newUser.profilePic});
     } 
     catch(err){
        next(err);
@@ -51,7 +51,7 @@ export const login = async (req,res,next)=>{
             return next(errorHandler(401,"wrong credentials"));
         }
         const token=jwt.sign({id:validUser._id},process.env.JWT_SECRET);
-        res.cookie("access_token",token,{httpOnly:true}).status(200).json({
+        res.cookie("access_token",token,{httpOnly:true,secure:true,sameSite:'none'}).status(200).json({
             _id:validUser._id,
             username:validUser.username,
             email:validUser.email,
