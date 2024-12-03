@@ -11,7 +11,9 @@ const useGetMessages = () => {
         try {
             setLoading(true);
             //api call
-            const res=await fetch(`${API_BASE_URL}/api/messages/${selectedConversation._id}`);
+            const res=await fetch(`${API_BASE_URL}/api/messages/${selectedConversation._id}`,{
+                 credentials:'include'
+            });
             if(!res.ok){
                 const error=await res.json();
                 throw new Error(error);

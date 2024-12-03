@@ -9,7 +9,9 @@ export const useLogout = () => {
     const logout = async () => {
         setLoading(true);
         try {
-            const res=await fetch(`${API_BASE_URL}/api/auth/logout`);
+            const res=await fetch(`${API_BASE_URL}/api/auth/logout`,{
+                 credentials:'include'
+            });
             if(!res.ok){
                 const error=await res.json();
                 throw new Error(error.message || "something went wrong");

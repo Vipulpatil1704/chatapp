@@ -24,7 +24,8 @@ export const useLogin=()=>{
                 headers:{
                     'content-type':'application/json'
                 },
-                body:JSON.stringify({email,password})
+                body:JSON.stringify({email,password}),
+                credentials:'include'
             })
             if(!res.ok){
                 const error=await res.json();

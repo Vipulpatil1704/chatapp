@@ -45,7 +45,8 @@ export const useSignup=()=>{
                     headers:{
                         "content-type":'application/json'
                     },
-                    body:JSON.stringify({username,email,password,confirmPassword,gender})
+                    body:JSON.stringify({username,email,password,confirmPassword,gender}),
+                    credentials:'include'
                 })
                 if(!res.ok){
                     dispatch({type:'FETCH_FAILED',payload:'Signup Failed'});

@@ -16,7 +16,8 @@ const useSendMessage = () => {
             headers:{
                 'content-type':'application/json'
             },
-            body:JSON.stringify({message})
+            body:JSON.stringify({message}),
+            credentials:'include'
         })
         if(!res.ok){
             const error=await res.json();
