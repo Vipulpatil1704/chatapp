@@ -6,7 +6,7 @@ export default function SearchInput() {
   const [search, setSearch] = useState('');
   const { state, dispatch } = useContext(ConversationContext);
   const { conversations } = useGetConversation();
-  console.log(conversations);
+  // console.log(conversations);
   function submitHandler(e){
     e.preventDefault();
     if(!search){

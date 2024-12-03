@@ -8,9 +8,9 @@ export default function Conversation({conversation,lastIndex}) {
   // console.log(conversation);
   const isSelected = state.selectedConversation?._id===conversation._id;
   const {onlineUsers}=useSocketContext();
-  console.log(onlineUsers)
+  // console.log(onlineUsers)
   const isOnline=onlineUsers.includes(conversation._id);
-  console.log(isOnline);
+  // console.log(isOnline);
   return (
     <div className={`flex gap-2 border-b-2 border-black cursor-pointer ${isSelected ? 'bg-sky-500': ''}`} onClick={()=>dispatch({type:'setSelectedConversation',payload:conversation})}>
       <div className={`avatar ${isOnline} ? 'online' : ''`}><div className='w-12 rounded-full'><img src={conversation.profilePic} alt="" /></div></div>

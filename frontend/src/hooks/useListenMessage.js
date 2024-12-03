@@ -10,7 +10,7 @@ const useListenMessage = ()=>{
         socket?.on('newMessage',(newMessage)=>{
             const sound=new Audio(notificationSound);
             sound.play();
-            console.log(notificationSound);
+            // console.log(notificationSound);
             dispatch({type:'setMessages',payload:[...messages,newMessage]})
         })
         // socket?.on('undeliveredMsg',(undeliveredMsgArr)=>{
