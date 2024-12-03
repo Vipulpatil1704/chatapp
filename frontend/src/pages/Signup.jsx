@@ -22,7 +22,7 @@ export default function () {
     await signup(formData.username,formData.email,formData.password,formData.confirmPassword,formData.gender);
   }
   return (
-    <div className='flex flex-col w-2/5 gap-2 p-4 bg-slate-200 rounded'>
+    <div className='flex flex-col w-2/5 gap-2 p-4 bg-slate-200 rounded signup-container'>
             <h1 className='text-3xl'>Signup to <span className='text-blue-400'>chat application</span></h1>
             <form className='flex flex-col gap-2' onSubmit={onsubmitHandler}>
                 <label>Username</label>
@@ -34,7 +34,6 @@ export default function () {
                 <label>Confirm Password</label>
                 <input className='input input-bordered w-full' type="password" placeholder='Enter Password' value={formData.confirmPassword} onChange={(e)=>setFormData({...formData,confirmPassword:e.target.value})}/>
                 <GenderCheckBox gender={formData.gender} setGender={handleSetGender} />
-                <Link>Don't have an account?</Link>
                 <button type='submit' className='btn btn-primary' disabled={loading}>{loading ?<span className='loading loading-spinner'>
                 </span> : "sign up"}</button>
             </form>

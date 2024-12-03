@@ -13,4 +13,10 @@
         max-height: 450px;
         overflow-y: scroll;
     }
+    .login-container{
+        width:100%;
+    }
+    .signup-container{
+        width:100%;
+    }
 }
