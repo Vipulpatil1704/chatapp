@@ -8,6 +8,7 @@ const io=new Server(server,{
         // origin:["http://localhost:5173"],
         origin:['https://chatapp-1-9mt9.onrender.com/'],
         methods:["GET","POST"],
+        credentials:true
     }
 })
 const userSocketMap={};

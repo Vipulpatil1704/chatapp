@@ -1,6 +1,7 @@
 import React,{createContext, useContext, useEffect, useState} from 'react'
 import { useAuthContext } from './AuthContext.jsx';
 import {io} from 'socket.io-client'
+import API_BASE_URL from '../apiConfig.js';
 export const SocketContext =createContext();
 export const useSocketContext=()=>{
     return useContext(SocketContext);
@@ -11,10 +12,11 @@ export const SocketContextProvider=({children})=>{
     const {authUser} = useAuthContext();
     useEffect(()=>{
         if(authUser){
-            const socket=io('http://localhost:3000',{
+            const socket=io(API_BASE_URL,{
                 query: {
                     userId:authUser._id,
-                }
+                },
+                transports:['websocket']
             })
             setSocket(socket);
             socket.on('getOnlineUsers',(users)=>{
