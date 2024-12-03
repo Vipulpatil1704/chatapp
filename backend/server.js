@@ -10,7 +10,7 @@ import cors from 'cors'
 dotenv.config();
 // const app=express();
 app.use(cors({
- origin:'https://chatapp-1-9mt9.onrender.com/',
+ origin:'https://chatapp-1-9mt9.onrender.com',
  methods:['GET','POST'],
  credentials:true
 }));
