@@ -11,6 +11,7 @@ const io=new Server(server,{
         credentials:true
     }
 })
+//websocket
 const userSocketMap={};
 // const undeliveredMsg={};
 // export const getUndeliveredMsg=(msg,receiverId)=>{
