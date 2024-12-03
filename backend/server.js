@@ -6,6 +6,7 @@ import messageRoute from './routes/message.routes.js'
 import userRoute from './routes/user.routes.js'
 import cookieParser from 'cookie-parser'
 import { server,app } from './socket/socket.js'
+import path from 'path'  
 dotenv.config();
 // const app=express();
 //middleware for parsing json bodies
@@ -28,7 +29,6 @@ app.use('/api/users',userRoute);
 // app.listen(PORT,()=>{
 //     console.log(`server is running on port ${PORT}`)
 // });
-
 
 //now instead of normal express web server ,will be using socket.io for real time communication
 

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { FaSistrix } from "react-icons/fa6";
-import { ConversationContext } from '../../context/conversatonContext.jsx';
+import { ConversationContext } from '../../context/ConversatonContext.jsx';
 import useGetConversation from '../../hooks/useGetConversation.js';
 export default function SearchInput() {
   const [search, setSearch] = useState('');
