@@ -6,8 +6,14 @@ import messageRoute from './routes/message.routes.js'
 import userRoute from './routes/user.routes.js'
 import cookieParser from 'cookie-parser'
 import { server,app } from './socket/socket.js'  
+import cors from 'cors'
 dotenv.config();
 // const app=express();
+app.use(cors({
+ origin:'https://chatapp-1-9mt9.onrender.com',
+ methods:['GET','POST'],
+ credentials:true
+}));
 //middleware for parsing json bodies
 app.use(express.json());
 app.use(cookieParser());
