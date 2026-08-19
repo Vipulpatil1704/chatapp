@@ -49,7 +49,10 @@ export const useSignup=()=>{
                     credentials:'include'
                 })
                 if(!res.ok){
-                    dispatch({type:'FETCH_FAILED',payload:'Signup Failed'});
+                    const errorResponse=await res.json().catch(()=>null);
+                    const errorMessage=errorResponse?.message || 'Signup Failed';
+                    dispatch({type:'FETCH_FAILED',payload:errorMessage});
+                    toast.error(errorMessage);
                     return;
                 }
                 const user= await res.json();

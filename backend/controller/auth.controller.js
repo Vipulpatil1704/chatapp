@@ -18,14 +18,13 @@ export const signup = async (req,res,next)=>{
         return next(errorHandler(400,"password don't match"));
     }
     const hashedPassword=bcryptjs.hashSync(password,10);
-    const boyProfilePic=`https://avatar.iran.liara.run/public/boy/?username=${username}`;
-    const girlProfilePic=`https://avatar.iran.liara.run/public/girl/?username=${username}`;
+    const profilePic=`https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(username)}`;
     const newUser=new User({
         username,
         email,
         password:hashedPassword,
         gender,
-        profilePic:gender==='male' ? boyProfilePic :girlProfilePic,
+        profilePic,
     })
     try{
         await newUser.save();
