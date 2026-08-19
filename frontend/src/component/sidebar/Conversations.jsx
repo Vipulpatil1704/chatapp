@@ -1,4 +1,3 @@
-import React from 'react'
 import Conversation from './Conversation.jsx'
 import useGetConversation from '../../hooks/useGetConversation.js'
 export default function Conversations() {
@@ -6,12 +5,12 @@ export default function Conversations() {
   // console.log(loading);
   // console.log(conversations);
   return (
-    <div className='flex flex-col gap-4 h-72 overflow-y-scroll'>
-      {loading && <div>Loading</div>}
-      {(!loading) && conversations.map((conversation,index)=>{
-        return <Conversation key={conversation._id} conversation={conversation} lastIndex={index===conversation.length -1}/>
+    <div className='conversation-list'>
+      {loading && <div className='empty-list'>Loading conversations...</div>}
+      {(!loading) && conversations.map((conversation)=>{
+        return <Conversation key={conversation._id} conversation={conversation}/>
       })}
-      {/* <Conversation/> */}
+      {!loading && conversations.length === 0 && <div className='empty-list'>No conversations yet</div>}
     </div>
   )
 }

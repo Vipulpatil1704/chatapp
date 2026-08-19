@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import { IoMdSend } from "react-icons/io";
 import useSendMessage from '../../hooks/useSendMessage.js';
 export default function MessageInput() {
@@ -10,15 +10,12 @@ export default function MessageInput() {
         setMessage("");
     }
     return (
-        <div>
-            <form onSubmit={onSubmitHandler}>
-                <div className='w-full relative'>
-                    <input className='input input-bordered w-full' type="text" placeholder='Enter your text...' value={message} onChange={(e)=>setMessage(e.target.value)}/>
-                    <button type='submit'>
-                        {loading ? <div>Loading...</div>:<span className='absolute top-1/2 right-0 -translate-y-1/2'><IoMdSend/></span>}
-                        
-                    </button>                 
-                </div>
+        <div className='message-input-wrap'>
+            <form onSubmit={onSubmitHandler} className='message-form'>
+                    <input type="text" placeholder='Write a message...' value={message} onChange={(e)=>setMessage(e.target.value)}/>
+                    <button className='send-button' type='submit' disabled={loading || !message.trim()} aria-label='Send message'>
+                        {loading ? '...' : <IoMdSend/>}
+                    </button>
             </form>
         </div>
     )

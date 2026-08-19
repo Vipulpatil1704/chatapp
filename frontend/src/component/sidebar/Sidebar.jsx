@@ -1,13 +1,16 @@
-import React from 'react'
 import SearchInput from './SearchInput'
 import Conversations from './Conversations'
 import LogoutButton from './LogoutButton'
+import { useAuthContext } from '../../context/AuthContext.jsx'
 export default function Sidebar() {
+  const { authUser } = useAuthContext();
   return (
-    <div className='flex flex-col gap-2 p-4 bg-slate-200 rounded-s-lg'>
+    <aside className='sidebar-panel'>
+        <div className='sidebar-brand'><div className='brand-mark'>C</div><div><p className='brand-title'>Convo</p><p className='sidebar-kicker'>Your messages</p></div></div>
+        <div className='sidebar-user'><img src={authUser?.profilePic} alt='' /><div><strong>{authUser?.username}</strong><span>Available to chat</span></div></div>
         <SearchInput/>
         <Conversations/>
         <LogoutButton/>
-    </div>
+    </aside>
   )
 }

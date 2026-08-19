@@ -1,10 +1,11 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { FaSistrix } from "react-icons/fa6";
 import { ConversationContext } from '../../context/ConversatonContext.jsx';
 import useGetConversation from '../../hooks/useGetConversation.js';
+import toast from 'react-hot-toast';
 export default function SearchInput() {
   const [search, setSearch] = useState('');
-  const { state, dispatch } = useContext(ConversationContext);
+  const { dispatch } = useContext(ConversationContext);
   const { conversations } = useGetConversation();
   // console.log(conversations);
   function submitHandler(e){
@@ -22,10 +23,11 @@ export default function SearchInput() {
     }
   }
   return (
-    <div className='flex gap-2'>
-      <form onSubmit={submitHandler}>
-        <input className='input input-bordered w-full rounded-2xl' type="text" placeholder='search...' value={search} onChange={(e)=>setSearch(e.target.value)}/>
-        <button className='btn btn-circle bg-sky-500 text-white' type='submit'><FaSistrix /></button>
+    <div className='search-wrap'>
+      <form className='search-form' onSubmit={submitHandler}>
+        <FaSistrix className='search-icon' />
+        <input type="text" placeholder='Search people' value={search} onChange={(e)=>setSearch(e.target.value)}/>
+        <button className='search-button' type='submit' aria-label='Search'><FaSistrix /></button>
       </form>
 
     </div>

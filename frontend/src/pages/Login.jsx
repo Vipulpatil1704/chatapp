@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useLogin } from '../hooks/useLogin';
 
@@ -12,16 +12,24 @@ export default function Login() {
 
     }
     return (
-        <div className='flex flex-col w-2/5 gap-2 p-4 bg-slate-200 rounded login-container'>
-            <h1 className='text-3xl'>Login to <span className='text-blue-400'>chat application</span></h1>
-            <form className='flex flex-col gap-2' onSubmit={handleSubmitHandler}>
-                <label htmlFor="email">Email</label>
-                <input className='input input-bordered w-full' type="email" placeholder='Enter Email' id='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
-                <label htmlFor="password">Password</label>
-                <input className='input input-bordered w-full' type="password" placeholder='Enter Password' id='password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
-                <Link to={'/signup'}>Don't have an account?</Link>
-                <button className='btn btn-primary'>Login</button>
+                <div className='auth-page'>
+                    <div className='auth-card'>
+                        <section className='auth-intro'>
+                            <div><p className='text-xs font-bold uppercase tracking-widest text-teal-200'>Convo</p><h1 className='mt-5 text-4xl font-bold'>Make room for better conversations.</h1></div>
+                            <p className='text-sm leading-6 text-teal-100'>A calm, focused place to keep up with the people who matter.</p>
+                        </section>
+                        <section className='auth-form'>
+                            <p className='text-sm font-semibold text-teal-700'>Welcome back</p><h2 className='mt-2 text-3xl font-bold'>Sign in to your account</h2>
+                        <form className='mt-6' onSubmit={handleSubmitHandler}>
+                                <label htmlFor="email">Email address</label>
+                                <input type="email" placeholder='you@example.com' id='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                                <label htmlFor="password">Password</label>
+                                <input type="password" placeholder='Enter your password' id='password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
+                                <Link className='auth-link mt-2' to={'/signup'}>New here? Create an account</Link>
+                                <button className='primary-action mt-3'>Sign in</button>
             </form>
+                        </section>
+                    </div>
         </div>
     )
 }

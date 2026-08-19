@@ -1,7 +1,5 @@
-import React from 'react'
-
 export default function NoChatSelected() {
   return (
-    <div className='w-full h-full bg-slate-200 gap-2 p-4 rounded-e-lg border-s-2 border-black'>Welecome, Please click on chat to continue messaging</div>
+    <div className='no-chat'><div className='no-chat-mark'>C</div><p className='chat-header-label'>Your inbox</p><h2>Choose a conversation</h2><p>Select someone from the left to start catching up.</p></div>
   )
 }

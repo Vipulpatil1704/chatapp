@@ -1,8 +1,7 @@
-import React, { useContext } from 'react'
-import userAvatar from '../../assets/user.png';
+import { useContext } from 'react'
 import { ConversationContext } from '../../context/ConversatonContext.jsx';
 import { useSocketContext } from '../../context/SocketContext.jsx';
-export default function Conversation({conversation,lastIndex}) {
+export default function Conversation({conversation}) {
   const {state,dispatch}=useContext(ConversationContext);
   // console.log(state);
   // console.log(conversation);
@@ -12,9 +11,10 @@ export default function Conversation({conversation,lastIndex}) {
   const isOnline=onlineUsers.includes(conversation._id);
   // console.log(isOnline);
   return (
-    <div className={`flex gap-2 border-b-2 border-black cursor-pointer ${isSelected ? 'bg-sky-500': ''}`} onClick={()=>dispatch({type:'setSelectedConversation',payload:conversation})}>
-      <div className={`avatar ${isOnline} ? 'online' : ''`}><div className='w-12 rounded-full'><img src={conversation.profilePic} alt="" /></div></div>
-      <div>{conversation.username}</div>
-    </div>
+    <button className={`conversation-row ${isSelected ? 'conversation-row-selected': ''}`} onClick={()=>dispatch({type:'setSelectedConversation',payload:conversation})}>
+      <div className='conversation-avatar'><img src={conversation.profilePic} alt='' />{isOnline && <span className='online-dot' />}</div>
+      <span className='conversation-name'>{conversation.username}</span>
+      <span className='conversation-arrow'>›</span>
+    </button>
   )
 }

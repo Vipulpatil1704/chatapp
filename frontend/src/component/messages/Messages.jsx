@@ -1,4 +1,3 @@
-import React, { useContext ,useEffect,useState} from 'react'
 import Message from './Message'
 // import { ConversationContext } from '../../context/ConversatonContext.jsx'
 import useGetMessages from '../../hooks/useGetMessages.js';
@@ -8,11 +7,11 @@ export default function Messages() {
   // console.log(messages);
   useListenMessage();
   return (
-    <div className='flex flex-col my-2 gap-2 messages'>
-        {loading ? <div>Loading...</div> : messages.map((message)=>{
-          return <Message message={message}/>
+    <div className='messages'>
+        {loading ? <div className='messages-empty'>Loading messages...</div> : messages.map((message)=>{
+          return <Message key={message._id} message={message}/>
         })}
-        {/* <Message/> */}
+        {!loading && messages.length === 0 && <div className='messages-empty'>No messages yet. Start the conversation.</div>}
     </div>
   )
 }
