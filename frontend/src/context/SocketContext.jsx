@@ -9,6 +9,7 @@ export const useSocketContext=()=>{
 export const SocketContextProvider=({children})=>{
     const [socket,setSocket]=useState(null); 
     const [onlineUsers,setOnlineUsers]=useState([]);
+    const [typingUserId,setTypingUserId]=useState(null);
     const {authUser} = useAuthContext();
     useEffect(()=>{
         if(authUser){
@@ -22,6 +23,9 @@ export const SocketContextProvider=({children})=>{
             socket.on('getOnlineUsers',(users)=>{
                 setOnlineUsers(users);
             })
+            socket.on('typing',({senderId,isTyping})=>{
+                setTypingUserId(isTyping ? senderId : null);
+            })
             return ()=>socket.close();
         }
         else{
@@ -29,9 +33,10 @@ export const SocketContextProvider=({children})=>{
                 socket.close();
                 setSocket(null);
             }
+            setTypingUserId(null);
         }
     },[authUser])
-    return <SocketContext.Provider value={{socket,onlineUsers}}>
+    return <SocketContext.Provider value={{socket,onlineUsers,typingUserId}}>
         {children}
     </SocketContext.Provider>
 }

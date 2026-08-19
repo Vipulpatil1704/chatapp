@@ -116,6 +116,7 @@
 .chat-header { gap: 12px; padding: 22px 28px; border-bottom: 1px solid #edf1f1; }
 .chat-header-avatar { width: 42px; height: 42px; flex: 0 0 42px; }
 .chat-header h2 { margin: 2px 0 0; font-family: 'Space Grotesk', sans-serif; font-size: 1.08rem; font-weight: 700; }
+.typing-indicator { min-height: 1rem; color: #38916d; font-size: .72rem; }
 .mobile-back { display: none; border: 0; color: #267b78; background: transparent; font-size: 1.8rem; line-height: 1; cursor: pointer; }
 .chat-status { margin-left: auto; color: #38916d; font-size: .75rem; font-weight: 600; }
 .messages { flex: 1; min-height: 0; overflow-y: auto; padding: 26px 28px; background: linear-gradient(135deg, #fff 0%, #fbfdfc 100%); }
